@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "css/home.css" %}">
+    <img src="{% static "images/product-1.jpg" %}" alt="" height="100px" width="100px">
+    
+</head>
+<body>
+    
+    
+     <h1> My Form </h1>
+{% comment %} {% url 'saveform' %} ye actin ke ander pass import hai taki from ka data save ho sake  {% endcomment %}
+  <form action="" method="POST" enctype="multipart/form-data">   <!--- data save krne k liya  --> 
+    {% csrf_token %}
+
+    {{form.as_p}}  <!--  form ke ander agar sapace lana hai to form.as_p likhne hoa </br> tg se kaam chlega -->
+    <input type="submit" value="submit"><br></br>
+   </form>
+
+  {% if data %}
+    {% for i in data %}
+        {% if i.img %}
+            <img src="{{ i.img.url }}" alt="" width="250px" height="250px">
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+   <!-- Upload Files in Django -->
+
+{% comment %}
+ <form action="{% url 'savefile' %}" method="POST" enctype="multipart/form-data">  <!-- Upload Files in multi balie line ikhena jauri hai barn file uplaod nhi hogi -->
+
+    {% csrf_token %}
+    <input type="file" name="file">
+    <input type="submit",value="submit">
+</form> 
+{% endcomment %}
+
+    {% endblock  %}
+</body>
+</html>

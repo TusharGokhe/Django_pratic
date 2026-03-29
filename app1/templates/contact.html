@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+     
+    {% block body %}
+
+    <h2> This is contact</h2>
+
+     {% for i  in cars %}
+    <h1> {{forloop.counter0}} {{i}}</h1>
+    {% endfor %}
+    <h2>{{name}}:{{age}}</h2>
+
+    <!-- space nhi dega to  (cars | length >3) ye run nhi hoga
+    sahi condiation ye bali ha apply karne ki   (cars|length > 3) ye run hoga -->
+
+{% if cars|length < 3 %}   
+
+<h1> print true</h1>
+
+{% else  %}
+
+<h1> print False</h1>
+
+{% endif %}
+
+<h1> {{name}}  {{age}}</h1>
+
+{% endblock  %}
+
+</body>
+</html>
